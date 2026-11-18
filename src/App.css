@@ -1,38 +1,3049 @@
-.App {
+
+/* =========================================
+   ALLINO - MAIN STYLESHEET
+========================================= */
+
+:root {
+  --wine: #722f45;
+  --wine-dark: #512032;
+  --pink: #f5a6b8;
+  --yellow: #ffca72;
+  --sage: #a8c7a0;
+  --lavender: #a9bceb;
+  --cream: #f9f6f0;
+  --dark: #292323;
+  --muted: #827a75;
+}
+
+.app {
+  overflow-x: clip;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(249, 246, 240, 0.96);
+  backdrop-filter: blur(15px);
+}
+
+.nav-top {
+  background: var(--wine);
+  color: white;
+  text-align: center;
+  padding: 9px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.nav-container {
+  height: 82px;
+  max-width: 1400px;
+  padding: 0 6%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--wine);
+}
+
+.logo span {
+  color: var(--pink);
+}
+
+.nav-links {
+  display: flex;
+  gap: 38px;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--wine);
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-icons button,
+.mobile-menu {
+  border: none;
+  background: none;
+  color: var(--dark);
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.nav-action,
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--dark);
+  font-size: 21px;
+}
+
+.nav-action span,
+.cart-icon span {
+  position: absolute;
+  top: -9px;
+  right: -10px;
+  width: 17px;
+  height: 17px;
+  background: var(--wine);
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  display: grid;
+  place-items: center;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero {
+  min-height: 630px;
+  padding: 65px 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  background: #f3eae2;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 550px;
+}
+
+.hero-label,
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--wine);
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(58px, 7vw, 100px);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -3px;
+}
+
+.hero h1 span {
+  color: var(--wine);
+  font-style: italic;
+}
+
+.hero-description {
+  color: var(--muted);
+  max-width: 390px;
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 25px 0 30px;
+}
+
+.primary-btn {
+  background: var(--wine);
+  color: white;
+  padding: 16px 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.primary-btn:hover {
+  background: var(--wine-dark);
+}
+
+.hero-note {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 55px;
+}
+
+.hero-note span {
+  color: var(--wine);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 25px;
+}
+
+.hero-note p {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.hero-image {
+  height: 500px;
+  position: relative;
+}
+
+.hero-image > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 180px 180px 5px 5px;
+}
+
+.floating-card {
+  position: absolute;
+  bottom: 35px;
+  left: -55px;
+  background: var(--yellow);
+  padding: 22px;
+  box-shadow: 0 10px 30px #00000012;
+}
+
+.floating-card span {
+  font-size: 24px;
+  color: var(--wine);
+}
+
+.floating-card p {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   COMMON SECTIONS
+========================================= */
+
+.category-section,
+.allino-categories,
+.products-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 85px 5%;
+}
+
+.products-section {
+  padding-top: 20px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 38px;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 12px;
+}
+
+.section-heading h2,
+.newsletter h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 600;
+}
+
+.section-heading h2 span {
+  color: var(--wine);
+  font-style: italic;
+}
+
+.section-heading > a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--wine);
+  font-size: 13px;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.allino-section-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.allino-section-heading span,
+.allino-newsletter > span {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--wine);
+  margin-bottom: 14px;
+}
+
+.allino-section-heading h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 4vw, 52px);
+  color: var(--wine);
+  margin: 0 0 14px;
+}
+
+.allino-section-heading p {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   CATEGORY CARDS
+========================================= */
+
+.category-grid,
+.allino-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.category-card,
+.allino-category-card {
+  position: relative;
+  display: block;
+  height: 390px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--pink);
+  text-decoration: none;
+}
+
+.category-card img,
+.allino-category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.category-card:hover img,
+.allino-category-card:hover img {
+  transform: scale(1.06);
+}
+
+.category-overlay,
+.allino-category-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  color: white;
+  background: linear-gradient(
+    transparent 35%,
+    rgba(0, 0, 0, 0.65)
+  );
+}
+
+.category-overlay p {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.category-overlay h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 32px;
+  margin: 8px 0;
+}
+
+.category-overlay span {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.allino-category-overlay h3 {
+  font-size: 29px;
+  margin: 0 0 10px;
+}
+
+.allino-category-overlay span {
+  font-size: 14px;
+}
+
+/* =========================================
+   CATEGORY SLIDER
+========================================= */
+
+.allino-category-slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.allino-category-slider {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 5px 0 15px;
+}
+
+.allino-category-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.allino-category-slider .allino-category-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.allino-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: var(--wine);
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allino-slider-arrow:hover {
+  background: var(--pink);
+}
+
+.allino-slider-prev {
+  left: -18px;
+}
+
+.allino-slider-next {
+  right: -18px;
+}
+
+/* =========================================
+   TRENDING PRODUCTS
+========================================= */
+
+.product-grid,
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.product-grid > *,
+.products-grid > * {
+  min-width: 0;
+}
+
+.product-grid img,
+.products-grid img {
+  max-width: 100%;
+}
+
+.product-card {
+  min-width: 0;
+}
+
+.product-image {
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+  background: #f0e8e2;
+}
+
+.product-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.07);
+}
+
+.product-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--yellow);
+  color: var(--dark);
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 8px 10px;
+}
+
+.wishlist-btn {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  border: none;
+  background: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  color: var(--wine);
+  cursor: pointer;
+}
+
+.wishlist-btn.active {
+  background: var(--wine);
+  color: white;
+}
+
+.quick-add {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  width: calc(100% - 24px);
+  border: none;
+  background: white;
+  color: var(--wine);
+  padding: 14px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.product-card:hover .quick-add,
+.quick-add:focus-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quick-add:hover {
+  background: var(--wine);
+  color: white;
+}
+
+.product-info {
+  padding: 17px 2px;
+}
+
+.product-info > p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 7px;
+}
+
+.product-info h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.product-price strong {
+  color: var(--wine);
+}
+
+.product-price del {
+  color: #a69b94;
+  font-size: 12px;
+}
+
+/* =========================================
+   PROMOTIONAL SECTIONS
+========================================= */
+
+.promo-section {
+  min-height: 390px;
+  background: var(--wine);
+  color: white;
+  padding: 80px 10%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.promo-content {
+  position: relative;
+  z-index: 2;
+}
+
+.promo-content .eyebrow {
+  color: var(--pink);
+}
+
+.promo-content h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(48px, 6vw, 75px);
+  line-height: 1.15;
+}
+
+.promo-content h2 span {
+  color: var(--yellow);
+  font-style: italic;
+}
+
+.promo-content > p:not(.eyebrow) {
+  color: #ead9df;
+  margin: 18px 0 25px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.promo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 22px;
+  background: var(--yellow);
+  color: var(--wine-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.promo-decoration {
+  position: absolute;
+  right: -30px;
+  bottom: -80px;
+  font-size: clamp(100px, 20vw, 280px);
+  font-weight: 800;
+  letter-spacing: -15px;
+  color: #ffffff0b;
+}
+
+.allino-promo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--pink);
+  min-height: 490px;
+}
+
+.allino-promo-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 70px 10%;
+}
+
+.allino-promo-content > span {
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--wine);
+}
+
+.allino-promo-content h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(36px, 4vw, 60px);
+  line-height: 1.15;
+  color: var(--wine);
+  margin: 22px 0;
+}
+
+.allino-promo-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #54313c;
+  max-width: 420px;
+  margin-bottom: 28px;
+}
+
+.allino-promo-button {
+  display: inline-block;
+  background: var(--wine);
+  color: white;
+  padding: 16px 28px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.allino-promo-button:hover {
+  background: var(--wine-dark);
+}
+
+.allino-promo-image {
+  min-height: 490px;
+  overflow: hidden;
+}
+
+.allino-promo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================
+   NEWSLETTER
+========================================= */
+
+.newsletter,
+.allino-newsletter {
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.allino-newsletter {
+  background: var(--cream);
+}
+
+.newsletter .eyebrow {
+  margin-bottom: 15px;
+}
+
+.newsletter h2,
+.allino-newsletter h2 {
+  color: var(--wine);
+}
+
+.allino-newsletter h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 4vw, 48px);
+  margin: 0 0 18px;
+}
+
+.newsletter > p:not(.eyebrow),
+.allino-newsletter p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 15px auto 30px;
+  max-width: 480px;
+}
+
+.newsletter-form,
+.allino-newsletter-form {
+  display: flex;
+  max-width: 530px;
+  margin: 0 auto;
+}
+
+.newsletter-form {
+  border-bottom: 1px solid var(--wine);
+  padding-bottom: 8px;
+}
+
+.newsletter-form input,
+.allino-newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  font-size: 14px;
+}
+
+.newsletter-form input {
+  border: none;
+  outline: none;
+}
+
+.allino-newsletter-form input {
+  padding: 17px;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+}
+
+.newsletter-form button,
+.allino-newsletter-form button {
+  border: none;
+  background: var(--wine);
+  color: white;
+  padding: 13px 17px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.newsletter-form button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.allino-newsletter-form button {
+  padding: 17px 25px;
+  font-weight: 600;
+  border-radius: 0 5px 5px 0;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+  background: #efe8e0;
+  padding: 65px 8% 20px;
+}
+
+.footer-main {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 50px;
+  padding-bottom: 50px;
+}
+
+.footer-brand > p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 17px 0;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  width: 35px;
+  height: 35px;
+  background: var(--wine);
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.social-links a:hover {
+  background: var(--wine-dark);
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer-column h4 {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--wine);
+}
+
+.footer-column a {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer-column a:hover {
+  color: var(--wine);
+}
+
+.footer-bottom {
+  max-width: 1300px;
+  margin: auto;
+  padding-top: 20px;
+  border-top: 1px solid #d8cec4;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.allino-footer {
+  background: var(--wine);
+  color: white;
+  padding: 65px 6% 25px;
+}
+
+.allino-footer-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 45px;
+}
+
+.allino-footer-logo {
+  font-size: 36px;
+  margin: 0 0 18px;
+}
+
+.allino-footer-logo span {
+  color: var(--pink);
+}
+
+.allino-footer-grid h3 {
+  font-size: 17px;
+  margin: 0 0 22px;
+}
+
+.allino-footer-grid p,
+.allino-footer-grid a {
+  color: #f1dfe5;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.allino-footer-grid a {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+
+.allino-footer-grid a:hover {
+  color: var(--yellow);
+}
+
+.allino-footer-bottom {
+  max-width: 1300px;
+  margin: 50px auto 0;
+  border-top: 1px solid #ffffff33;
+  padding-top: 25px;
+  text-align: center;
+  color: #f1dfe5;
+  font-size: 13px;
+}
+
+/* =========================================
+   WISHLIST
+========================================= */
+
+.shopping-page {
+  min-height: 75vh;
+  padding: 70px 8%;
+}
+
+.shopping-page > h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 42px;
+  color: var(--wine);
+  margin-bottom: 40px;
+}
+
+.empty-state {
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  color: var(--wine);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.empty-state p {
+  color: var(--muted);
+  font-size: 14px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.cart-item {
+  display: flex;
+  gap: 25px;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+.cart-item img {
+  width: 110px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.cart-item h3 {
+  margin-bottom: 12px;
+}
+
+.cart-item button,
+.product-info button {
+  margin-top: 12px;
+  border: none;
+  background: var(--wine);
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.cart-total {
+  margin-top: 35px;
+  text-align: right;
+}
+
+.cart-total button {
+  margin-top: 15px;
+  padding: 15px 25px;
+  border: none;
+  background: var(--wine);
+  color: white;
+  cursor: pointer;
+}
+
+/* =========================================
+   SHOPPING BAG
+========================================= */
+
+.allino-cart-page {
+  min-height: 100vh;
+  background: white;
+  padding: 50px 5% 90px;
+}
+
+.allino-cart-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.allino-cart-heading {
+  font-family: Arial, sans-serif;
+  font-size: clamp(26px, 4vw, 40px);
+  color: var(--wine);
+  font-weight: 800;
+  padding-bottom: 25px;
+  margin: 0 0 25px;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.allino-cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 30px 0;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.allino-cart-product {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
+  min-width: 0;
+}
+
+.allino-cart-image {
+  width: 135px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.allino-cart-info h2 {
+  font-size: 23px;
+  color: #222;
+  margin: 0 0 12px;
+}
+
+.allino-cart-info p {
+  font-size: 16px;
+  color: #888;
+  margin: 0 0 18px;
+}
+
+.allino-cart-info strong {
+  font-size: 19px;
+  color: var(--wine);
+}
+
+/* QUANTITY BUTTONS */
+
+.allino-cart-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  height: 54px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.allino-cart-quantity button {
+  width: 50px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: #222;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.allino-cart-quantity button:hover:not(:disabled) {
+  color: var(--wine);
+}
+
+.allino-cart-quantity button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.allino-cart-quantity span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* CART PRICE */
+
+.allino-cart-price {
+  min-width: 145px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 18px;
+}
+
+.allino-cart-price strong {
+  font-size: 22px;
+  color: #222;
+}
+
+.allino-cart-price button {
+  border: none;
+  background: transparent;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.allino-cart-price button:hover {
+  color: var(--wine);
+}
+
+/* CART SUMMARY */
+
+.allino-cart-summary {
+  max-width: 400px;
+  margin: 45px 0 0 auto;
+}
+
+.allino-cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.allino-cart-summary p {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 25px;
+}
+
+.allino-cart-checkout,
+.allino-cart-shop-link {
+  display: inline-block;
+  width: 100%;
+  padding: 17px 25px;
+  background: var(--wine);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.allino-cart-continue {
+  display: block;
+  text-align: center;
+  margin-top: 22px;
+  color: var(--wine);
+  text-decoration: none;
+}
+
+.allino-cart-empty {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.allino-cart-empty h2 {
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.allino-cart-empty p {
+  color: #888;
+  margin-bottom: 25px;
+}
+
+.allino-cart-shop-link {
+  width: auto;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1000px) {
+  .hero {
+    gap: 35px;
+    padding: 55px 6%;
+  }
+
+  .hero-image {
+    height: 420px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (max-width: 992px) {
+  .product-grid,
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-image {
+    height: 380px;
+  }
+
+  .allino-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .allino-category-slider .allino-category-card {
+    flex-basis: calc((100% - 24px) / 2);
+    height: 340px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-section,
+  .allino-categories,
+  .products-section {
+    padding: 60px 5%;
+  }
+
+  .category-grid,
+  .allino-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card,
+  .allino-category-card {
+    height: 300px;
+  }
+
+  .allino-promo {
+    grid-template-columns: 1fr;
+  }
+
+  .allino-promo-content {
+    padding: 60px 8%;
+  }
+
+  .allino-promo-image {
+    min-height: 320px;
+    height: 320px;
+  }
+
+  .allino-cart-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+  }
+
+  .allino-cart-product {
+    grid-column: 1 / -1;
+    gap: 16px;
+  }
+
+  .allino-cart-image {
+    width: 105px;
+    height: 140px;
+  }
+
+  .allino-cart-info h2 {
+    font-size: 18px;
+  }
+
+  .allino-cart-quantity {
+    width: 145px;
+    height: 45px;
+  }
+
+  .allino-cart-quantity button {
+    width: 43px;
+  }
+
+  .allino-cart-price {
+    min-width: 0;
+  }
+
+  .allino-cart-price strong {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-container {
+    height: 70px;
+    padding: 0 5%;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .logo {
+    font-size: 27px;
+  }
+
+  .nav-icons {
+    gap: 14px;
+  }
+
+  .nav-icons button {
+    font-size: 19px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 55px 7% 70px;
+    gap: 40px;
+  }
+
+  .hero h1 {
+    font-size: 65px;
+  }
+
+  .hero-image {
+    height: 420px;
+    margin-left: 25px;
+  }
+
+  .floating-card {
+    left: -25px;
+  }
+
+  .hero-note {
+    margin-top: 35px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .section-heading h2 {
+    font-size: 34px;
+  }
+
+  .section-heading > a {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .product-grid,
+  .products-grid {
+    gap: 15px;
+  }
+
+  .product-image {
+    height: 260px;
+  }
+
+  .quick-add {
+    opacity: 1;
+    transform: none;
+    padding: 11px 5px;
+    font-size: 9px;
+  }
+
+  .product-info h3 {
+    font-size: 12px;
+  }
+
+  .promo-section {
+    padding: 70px 7%;
+  }
+
+  .newsletter {
+    padding: 75px 6%;
+  }
+
+  .newsletter h2 {
+    font-size: 34px;
+  }
+
+  .footer {
+    padding: 50px 7% 20px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px 20px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .allino-category-slider .allino-category-card {
+    flex-basis: 82%;
+    height: 320px;
+  }
+
+  .allino-slider-prev {
+    left: 5px;
+  }
+
+  .allino-slider-next {
+    right: 5px;
+  }
+
+  .allino-slider-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .shopping-page {
+    padding: 45px 5%;
+  }
+
+  .shopping-page > h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid,
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .allino-newsletter-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .allino-newsletter-form input,
+  .allino-newsletter-form button {
+    border-radius: 5px;
+  }
+
+  .allino-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 53px;
+  }
+
+  .product-image {
+    height: 220px;
+  }
+
+  .product-price {
+    gap: 6px;
+    font-size: 12px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* NAVBAR HIDE ON SCROLL */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar {
+    transition: none;
+  }
+}
+
+
+
+/* ====================================
+   ALLINO MOBILE NAVIGATION
+==================================== */
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .mobile-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    font-size: 25px;
+  }
+
+  .nav-container {
+    position: relative;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .mobile-nav-open {
+    max-height: 300px;
+    opacity: 1;
+    visibility: visible;
+    border-top: 1px solid #e9dfd9;
+    box-shadow: 0 12px 20px #00000012;
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 16px 7%;
+    color: var(--dark);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #e9dfd9;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+
+  .mobile-nav a:hover {
+    background: #f3eae2;
+    color: var(--wine);
+  }
+
+  .mobile-nav a:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav {
+    transition: none;
+  }
+}
+
+
+/* =====================================
+   ALLINO SEARCH BAR
+===================================== */
+
+.allino-search-overlay {
+  position: fixed;
+  inset: 100% 0 auto;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 101;
+}
+
+.allino-search-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--cream);
+  z-index: 102;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  max-height: 75vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.allino-search-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 35px 5% 45px;
+}
+
+/* SEARCH HEADING */
+
+.allino-search-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.allino-search-heading h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  color: var(--wine);
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 600;
+}
+
+.allino-search-close {
+  border: none;
+  background: transparent;
+  color: var(--wine);
+  font-size: 27px;
+  cursor: pointer;
+}
+
+/* SEARCH INPUT */
+
+.allino-search-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  border: 1px solid #d9c7cd;
+  border-radius: 6px;
+  padding: 17px 20px;
+}
+
+.allino-search-box:focus-within {
+  border-color: var(--wine);
+  box-shadow: 0 0 0 2px rgba(114, 47, 69, 0.08);
+}
+
+.allino-search-box > svg {
+  color: var(--wine);
+  font-size: 23px;
+  flex-shrink: 0;
+}
+
+.allino-search-box input {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--dark);
+  font-size: 15px;
+}
+
+.allino-search-box input::placeholder {
+  color: #999;
+}
+
+.allino-search-box input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.allino-search-box button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--wine);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* POPULAR SEARCHES */
+
+.allino-popular-searches {
+  margin-top: 30px;
+}
+
+.allino-popular-searches h4 {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.allino-search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.allino-search-tags button {
+  background: transparent;
+  color: var(--wine);
+  border: 1px solid #d9c7cd;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.allino-search-tags button:hover {
+  background: var(--wine);
+  color: white;
+  border-color: var(--wine);
+}
+
+/* SEARCH RESULTS */
+
+.allino-search-results {
+  margin-top: 30px;
+}
+
+.allino-search-count {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.allino-search-product {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid #e4dcd6;
+}
+
+.allino-search-product:last-child {
+  border-bottom: none;
+}
+
+.allino-search-product > img {
+  width: 85px;
+  height: 105px;
+  object-fit: cover;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.allino-search-product-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.allino-search-product-info > span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.allino-search-product-info h3 {
+  color: var(--dark);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.allino-search-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.allino-search-price strong {
+  color: var(--wine);
+  font-size: 15px;
+}
+
+.allino-search-price del {
+  color: #999;
+  font-size: 12px;
+}
+
+/* SEARCH PRODUCT ACTIONS */
+
+.allino-search-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.allino-search-heart {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--wine);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--wine);
+  font-size: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.allino-search-heart.active,
+.allino-search-heart:hover {
+  background: var(--wine);
+  color: white;
+}
+
+.allino-search-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--wine);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.allino-search-add:hover {
+  background: var(--wine-dark);
+}
+
+/* EMPTY SEARCH RESULTS */
+
+.allino-no-results {
+  text-align: center;
+  padding: 35px 15px;
+}
+
+.allino-no-results > svg {
+  font-size: 35px;
+  color: var(--wine);
+  margin-bottom: 15px;
+}
+
+.allino-no-results h3 {
+  color: var(--wine);
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.allino-no-results p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.allino-no-results button {
+  background: var(--wine);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* =====================================
+   MOBILE SEARCH
+===================================== */
+
+@media (max-width: 700px) {
+  .allino-search-container {
+    padding: 25px 5% 30px;
+  }
+
+  .allino-search-panel {
+    max-height: 70vh;
+  }
+
+  .allino-search-heading h2 {
+    font-size: 28px;
+  }
+
+  .allino-search-box {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .allino-search-box input {
+    font-size: 16px;
+  }
+
+  .allino-search-tags {
+    gap: 8px;
+  }
+
+  .allino-search-tags button {
+    font-size: 12px;
+    padding: 8px 13px;
+  }
+
+  .allino-search-product {
+    display: grid;
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 12px;
+    padding: 15px 0;
+  }
+
+  .allino-search-product > img {
+    width: 70px;
+    height: 90px;
+    grid-row: span 2;
+  }
+
+  .allino-search-product-info h3 {
+    font-size: 14px;
+  }
+
+  .allino-search-actions {
+    grid-column: 2;
+  }
+
+  .allino-search-heart {
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+  }
+
+  .allino-search-add {
+    padding: 10px 14px;
+    font-size: 11px;
+  }
+}
+
+
+/* ========================================
+   ALLINO COLLECTION PAGE
+======================================== */
+
+.allino-collection-page {
+  min-height: 85vh;
+  background: #f9f6f0;
+}
+
+/* SUBCATEGORY FILTERS */
+
+.allino-collection-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 35px 5%;
+  border-bottom: 1px solid #e9dfd9;
+}
+
+.allino-filter-button {
+  background: transparent;
+  color: #722f45;
+  border: 1px solid #dac8ce;
+  padding: 11px 24px;
+  border-radius: 30px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.allino-filter-button:hover,
+.allino-filter-button.active {
+  background: #722f45;
+  color: #ffffff;
+  border-color: #722f45;
+}
+
+/* COLLECTION CONTENT */
+
+.allino-collection-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 45px 6% 90px;
+}
+
+/* COLLECTION TOOLBAR */
+
+.allino-collection-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.allino-collection-toolbar h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #722f45;
+  margin-bottom: 6px;
+}
+
+.allino-product-count {
+  font-size: 13px;
+  color: #827a75;
+}
+
+/* SORT DROPDOWN */
+
+.allino-sort-select {
+  border: 1px solid #ddccd3;
+  background: transparent;
+  color: #722f45;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline-color: #722f45;
+  max-width: 180px;
+}
+
+.allino-sort-select option {
+  background: #ffffff;
+  color: #292323;
+}
+
+/* EMPTY COLLECTION */
+
+.allino-collection-empty {
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 18px;
+}
+
+.allino-collection-empty h2 {
+  color: #722f45;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 30px;
+}
+
+.allino-collection-empty p {
+  color: #827a75;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.allino-collection-empty a {
+  background: #722f45;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: background 0.25s ease;
+}
+
+.allino-collection-empty a:hover {
+  background: #512032;
+}
+
+/* ========================================
+   COLLECTION RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 700px) {
+  .allino-collection-header {
+    padding: 25px 5% 40px;
+  }
+
+  .allino-breadcrumb {
+    margin-bottom: 25px;
+    font-size: 11px;
+  }
+
+  .allino-collection-header h1 {
+    font-size: 36px;
+  }
+
+  .allino-collection-description {
+    font-size: 13px;
+  }
+
+  .allino-collection-filters {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 20px 5%;
+    gap: 8px;
+  }
+
+  .allino-collection-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .allino-filter-button {
+    padding: 10px 16px;
+    font-size: 12px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .allino-collection-content {
+    padding: 30px 5% 60px;
+  }
+
+  .allino-collection-toolbar {
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+
+  .allino-collection-toolbar h2 {
+    font-size: 23px;
+  }
+
+  .allino-product-count {
+    font-size: 11px;
+  }
+
+  .allino-sort-select {
+    font-size: 11px;
+    max-width: 135px;
+    padding: 9px 6px;
+  }
+}
+
+
+/* PRODUCT DETAIL LINKS */
+
+.product-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-image-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-name-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-name-link:hover h3 {
+  color: #722f45;
+}
+
+
+/* ========================================
+   ALLINO PRODUCT DETAILS PAGE
+======================================== */
+
+.allino-product-details {
+  min-height: 85vh;
+  background: #f9f6f0;
+  padding: 35px 6% 90px;
+}
+
+.allino-product-details-container {
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+/* BACK LINK */
+
+.allino-product-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #722f45;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 35px;
+  transition: opacity 0.2s ease;
+}
+
+.allino-product-back:hover {
+  opacity: 0.7;
+}
+
+/* TWO-COLUMN LAYOUT */
+
+.allino-product-details-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 65px;
+  align-items: start;
+}
+
+/* PRODUCT IMAGE */
+
+.allino-product-details-image {
+  position: relative;
+  background: #f0e9e4;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.allino-product-details-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.allino-details-tag {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  padding: 9px 15px;
+  background: #722f45;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* PRODUCT INFORMATION */
+
+.allino-product-details-info {
+  padding-top: 10px;
+}
+
+.allino-details-category {
+  color: #827a75;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+  margin-bottom: 18px;
+}
+
+.allino-product-details-info h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  color: #722f45;
+  font-size: clamp(34px, 3.5vw, 55px);
+  line-height: 1.2;
+  font-weight: 600;
+  margin: 0 0 22px;
+}
+
+/* PRICE */
+
+.allino-details-price {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.allino-details-price strong {
+  font-size: 26px;
+  color: #722f45;
+  font-weight: 700;
+}
+
+.allino-details-price del {
+  font-size: 17px;
+  color: #aaa09a;
+}
+
+.allino-details-price span {
+  font-size: 11px;
+  color: #722f45;
+  background: #f1dce2;
+  padding: 7px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.allino-details-description {
+  font-size: 14px;
+  color: #827a75;
+  line-height: 1.9;
+  margin-bottom: 30px;
+}
+
+.allino-details-divider {
+  height: 1px;
+  background: #e4dcd6;
+  margin: 25px 0 30px;
+}
+
+/* PRODUCT OPTIONS */
+
+.allino-details-option {
+  margin-bottom: 30px;
+}
+
+.allino-details-option h3 {
+  font-size: 14px;
+  color: #292323;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.allino-details-option-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.allino-details-option-heading h3 {
+  margin: 0;
+}
+
+.allino-details-option-heading span {
+  font-size: 12px;
+  color: #827a75;
+}
+
+/* SIZE BUTTONS */
+
+.allino-size-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.allino-size-btn {
+  min-width: 50px;
+  height: 48px;
+  padding: 0 12px;
+  background: transparent;
+  color: #292323;
+  border: 1px solid #d8ccc7;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.allino-size-btn:hover,
+.allino-size-btn.active {
+  background: #722f45;
+  color: #ffffff;
+  border-color: #722f45;
+}
+
+/* COLOR BUTTONS */
+
+.allino-color-options {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.allino-color-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #f9f6f0;
+  outline: 1px solid #d9ceca;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.allino-color-btn:hover {
+  transform: scale(1.1);
+}
+
+.allino-color-btn.active {
+  outline: 2px solid #722f45;
+  outline-offset: 3px;
+}
+
+/* QUANTITY */
+
+.allino-quantity-selector {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d8ccc7;
+  height: 48px;
+}
+
+.allino-quantity-selector button {
+  width: 48px;
+  height: 46px;
+  background: transparent;
+  border: none;
+  color: #722f45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.allino-quantity-selector button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.allino-quantity-selector span {
+  min-width: 45px;
+  text-align: center;
+  color: #292323;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ADD TO BAG */
+
+.allino-details-add-btn {
+  width: 100%;
+  min-height: 54px;
+  background: #722f45;
+  color: #ffffff;
+  border: 1px solid #722f45;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+  margin-bottom: 12px;
+}
+
+.allino-details-add-btn:hover {
+  background: #512032;
+  border-color: #512032;
+}
+
+/* WISHLIST */
+
+.allino-details-wishlist-btn {
+  width: 100%;
+  min-height: 54px;
+  background: transparent;
+  color: #722f45;
+  border: 1px solid #722f45;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.allino-details-wishlist-btn:hover,
+.allino-details-wishlist-btn.active {
+  background: #f1dce2;
+}
+
+/* FEEDBACK */
+
+.allino-details-message {
+  margin-top: 15px;
+  padding: 12px 15px;
+  background: #f1e5e8;
+  color: #722f45;
+  font-size: 13px;
+  border-radius: 3px;
+}
+
+/* SHOPPING BENEFITS */
+
+.allino-details-benefits {
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 1px solid #e4dcd6;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.allino-details-benefits div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #827a75;
+  font-size: 13px;
+}
+
+.allino-details-benefits svg {
+  color: #722f45;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* PRODUCT NOT FOUND */
+
+.allino-product-not-found {
+  min-height: 65vh;
+  padding: 80px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  gap: 20px;
+  background: #f9f6f0;
 }
 
-.App-link {
-  color: #61dafb;
+.allino-product-not-found h2 {
+  color: #722f45;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 36px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.allino-product-not-found p {
+  color: #827a75;
+}
+
+.allino-product-not-found a {
+  color: #722f45;
+  font-weight: 600;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 900px) {
+  .allino-product-details-grid {
+    gap: 35px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 700px) {
+  .allino-product-details {
+    padding: 20px 5% 60px;
+  }
+
+  .allino-product-back {
+    margin-bottom: 22px;
+  }
+
+  .allino-product-details-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .allino-product-details-image img {
+    aspect-ratio: 4 / 5;
+  }
+
+  .allino-product-details-info {
+    padding-top: 0;
+  }
+
+  .allino-product-details-info h1 {
+    font-size: 34px;
+  }
+
+  .allino-details-price strong {
+    font-size: 23px;
+  }
+
+  .allino-details-option {
+    margin-bottom: 25px;
+  }
+
+  .allino-size-btn {
+    min-width: 45px;
+    height: 45px;
+  }
+}
+
+
+/* CLICKABLE PRODUCT IMAGE AND NAME */
+
+.product-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-image-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-name-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-name-link:hover h3 {
+  color: #722f45;
+}
+
+
+/* =========================================
+   ALLINO SHOPPING CART
+========================================= */
+
+.allino-cart-page {
+  min-height: 85vh;
+  background: #f9f6f0;
+  padding: 55px 6% 90px;
+}
+
+.allino-cart-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.allino-cart-heading {
+  margin-bottom: 35px;
+}
+
+.allino-cart-heading h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(32px, 4vw, 48px);
+  color: #722f45;
+  margin: 0 0 8px;
+}
+
+.allino-cart-heading p {
+  color: #827a75;
+  font-size: 14px;
+}
+
+/* LEFT AND RIGHT LAYOUT */
+
+.allino-cart-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  align-items: start;
+  gap: 45px;
+}
+
+/* CART ITEMS */
+
+.allino-cart-items {
+  min-width: 0;
+}
+
+.allino-cart-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 25px 0;
+  border-bottom: 1px solid #e5dcd6;
+}
+
+.allino-cart-item:first-child {
+  padding-top: 0;
+}
+
+.allino-cart-item-image {
+  flex: 0 0 145px;
+  display: block;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #f0e9e4;
+}
+
+.allino-cart-item-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.allino-cart-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.allino-cart-item-category {
+  font-size: 12px;
+  color: #827a75;
+  margin: 0 0 9px;
+}
+
+.allino-cart-item-name {
+  display: block;
+  color: #292323;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.allino-cart-item-name:hover {
+  color: #722f45;
+}
+
+.allino-cart-item-price {
+  color: #722f45;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 17px;
+}
+
+/* SIZE AND COLOR */
+
+.allino-cart-variants {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+.allino-cart-variants p,
+.allino-cart-color-row {
+  margin: 0;
+  font-size: 13px;
+  color: #827a75;
+}
+
+.allino-cart-variants strong {
+  color: #292323;
+  font-weight: 600;
+}
+
+.allino-cart-color-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* QUANTITY AND REMOVE */
+
+.allino-cart-item-bottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.allino-cart-quantity {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d9cec8;
+  border-radius: 4px;
+  height: 40px;
+}
+
+.allino-cart-quantity button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: none;
+  color: #722f45;
+  cursor: pointer;
+}
+
+.allino-cart-quantity button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.allino-cart-quantity span {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 600;
+  color: #292323;
+}
+
+.allino-cart-remove {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  background: transparent;
+  color: #827a75;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.allino-cart-remove:hover {
+  color: #722f45;
+}
+
+.allino-cart-line-total {
+  white-space: nowrap;
+  font-size: 17px;
+  color: #722f45;
+  padding-top: 3px;
+}
+
+.allino-cart-continue {
+  display: inline-block;
+  margin-top: 28px;
+  color: #722f45;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ORDER SUMMARY */
+
+.allino-order-summary {
+  background: #fff;
+  border: 1px solid #ece2dd;
+  padding: 30px;
+  border-radius: 6px;
+  position: sticky;
+  top: 110px;
+}
+
+.allino-order-summary h2 {
+  color: #722f45;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 27px;
+  margin: 0 0 30px;
+}
+
+.allino-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #827a75;
+}
+
+.allino-summary-row strong {
+  color: #292323;
+  font-weight: 600;
+}
+
+.allino-shipping-note {
+  font-size: 12px;
+  color: #722f45;
+  line-height: 1.6;
+  margin: -5px 0 20px;
+}
+
+.allino-summary-divider {
+  height: 1px;
+  background: #e5dcd6;
+  margin: 25px 0;
+}
+
+.allino-summary-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #292323;
+}
+
+.allino-summary-total strong {
+  color: #722f45;
+  font-size: 23px;
+}
+
+.allino-summary-tax-note {
+  color: #827a75;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 18px 0 24px;
+}
+
+.allino-payment-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 54px;
+  border: 1px solid #722f45;
+  background: #722f45;
+  color: #fff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.allino-payment-button:hover {
+  background: #512032;
+}
+
+.allino-summary-secure {
+  text-align: center;
+  font-size: 11px;
+  color: #827a75;
+  line-height: 1.6;
+  margin: 15px 0 0;
+}
+
+/* EMPTY CART */
+
+.allino-cart-empty {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 60px 20px;
+  background: #f9f6f0;
+  text-align: center;
+}
+
+.allino-cart-empty svg {
+  color: #722f45;
+}
+
+.allino-cart-empty h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  color: #722f45;
+  font-size: 36px;
+}
+
+.allino-cart-empty p {
+  color: #827a75;
+}
+
+.allino-cart-empty a {
+  color: #722f45;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+  .allino-cart-layout {
+    grid-template-columns: minmax(0, 1fr) 310px;
+    gap: 25px;
+  }
+
+  .allino-order-summary {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 800px) {
+  .allino-cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .allino-order-summary {
+    position: static;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 550px) {
+  .allino-cart-page {
+    padding: 30px 5% 60px;
+  }
+
+  .allino-cart-item {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .allino-cart-item-image {
+    flex-basis: 105px;
+  }
+
+  .allino-cart-item-name {
+    font-size: 16px;
+  }
+
+  .allino-cart-item-price {
+    font-size: 15px;
+  }
+
+  .allino-cart-line-total {
+    margin-left: 119px;
+    padding: 0;
+  }
+
+  .allino-cart-item-bottom {
+    gap: 12px;
+  }
+
+  .allino-order-summary {
+    padding: 22px;
   }
 }
