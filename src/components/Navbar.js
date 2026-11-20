@@ -1,8 +1,20 @@
 
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
+import {
+  Link,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+
 import { motion } from "framer-motion";
+
 import { useShop } from "../Context/ShopContext";
+import { useGender } from "../Context/GenderContext";
 import products from "../data/products";
 
 import {
@@ -11,15 +23,22 @@ import {
   FiShoppingBag,
   FiMenu,
   FiX,
+  FiCheck,
 } from "react-icons/fi";
 
 function Navbar() {
   const {
+    cart,
     cartCount,
     wishlist,
     addToCart,
     toggleWishlist,
   } = useShop();
+
+  const { gender, switchGender, isMen } = useGender();
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const wishlistCount = wishlist.length;
 
@@ -31,35 +50,75 @@ function Navbar() {
   const lastScrollY = useRef(0);
   const searchInputRef = useRef(null);
 
-  // SEARCH FILTER
-  const filteredProducts = products.filter((product) => {
-    const query = searchQuery.toLowerCase().trim();
+  // PRODUCTS FOR CURRENT GENDER
+  const collectionProducts = products.filter(
+    (product) => product.gender === gender
+  );
 
-    return (
-      product.name.toLowerCase().includes(query) ||
-      product.category.toLowerCase().includes(query) ||
-      (product.tag || "").toLowerCase().includes(query)
-    );
-  });
+  // SEARCH PRODUCTS
+  const query = searchQuery.toLowerCase().trim();
 
-  const popularSearches = [
-    "Dress",
-    "Bag",
-    "Sunglasses",
-    "Women",
-    "Accessories",
-  ];
+  const filteredProducts = query
+    ? collectionProducts.filter((product) => {
+        return (
+          (product.name || "")
+            .toLowerCase()
+            .includes(query) ||
+          (product.category || "")
+            .toLowerCase()
+            .includes(query) ||
+          (product.tag || "")
+            .toLowerCase()
+            .includes(query)
+        );
+      })
+    : [];
 
-  // HIDE NAVBAR ON SCROLL
+  const popularSearches = isMen
+    ? [
+        "Shirt",
+        "Jacket",
+        "Shoes",
+        "Watch",
+        "Accessories",
+      ]
+    : [
+        "Dress",
+        "Bag",
+        "Sunglasses",
+        "Women",
+        "Accessories",
+      ];
+
+  // CLOSE NAVIGATION PANELS
+  const closePanels = () => {
+    setMenuOpen(false);
+    setSearchOpen(false);
+    setSearchQuery("");
+    setShowNavbar(true);
+  };
+
+  // HIDE NAVBAR WHILE SCROLLING DOWN
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = Math.max(0, window.scrollY);
+      const currentScrollY = Math.max(
+        0,
+        window.scrollY
+      );
 
-      if (menuOpen || searchOpen || currentScrollY < 80) {
+      if (
+        menuOpen ||
+        searchOpen ||
+        currentScrollY < 80
+      ) {
         setShowNavbar(true);
-      } else if (currentScrollY > lastScrollY.current) {
+      } else if (
+        currentScrollY > lastScrollY.current
+      ) {
         setShowNavbar(false);
-      } else if (currentScrollY < lastScrollY.current) {
+      } else if (
+        currentScrollY < lastScrollY.current
+      ) {
         setShowNavbar(true);
       }
 
@@ -68,45 +127,159 @@ function Navbar() {
 
     lastScrollY.current = window.scrollY;
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      { passive: true }
+    );
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
     };
   }, [menuOpen, searchOpen]);
 
-  // AUTOMATICALLY FOCUS SEARCH INPUT
+  // FOCUS SEARCH INPUT
   useEffect(() => {
     if (searchOpen) {
       searchInputRef.current?.focus();
     }
   }, [searchOpen]);
 
-  // CLOSE WITH ESCAPE KEY
+  // CLOSE PANELS ON ESCAPE
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === "Escape") {
-        setSearchOpen(false);
         setMenuOpen(false);
+        setSearchOpen(false);
         setSearchQuery("");
+        setShowNavbar(true);
       }
     };
 
-    window.addEventListener("keydown", handleEscape);
+    window.addEventListener(
+      "keydown",
+      handleEscape
+    );
 
     return () => {
-      window.removeEventListener("keydown", handleEscape);
+      window.removeEventListener(
+        "keydown",
+        handleEscape
+      );
     };
   }, []);
 
-  // CLOSE ALL PANELS
-  const closePanels = () => {
-    setMenuOpen(false);
-    setSearchOpen(false);
-    setSearchQuery("");
-    setShowNavbar(true);
+  // SCROLL TO A SECTION ON HOMEPAGE
+  const scrollToSection = (sectionId) => {
+    closePanels();
+
+    if (location.pathname === "/") {
+      const section = document.getElementById(
+        sectionId
+      );
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      return;
+    }
+
+    // React Router navigation preserves gender context.
+    navigate("/", {
+      state: {
+        scrollTo: sectionId,
+      },
+    });
+  };
+
+  // SCROLL AFTER RETURNING FROM COLLECTION PAGE
+  useEffect(() => {
+    if (
+      location.pathname !== "/" ||
+      !location.state?.scrollTo
+    ) {
+      return;
+    }
+
+    const sectionId = location.state.scrollTo;
+
+    let frameId;
+    let attempts = 0;
+
+    const findSection = () => {
+      const section = document.getElementById(
+        sectionId
+      );
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        navigate("/", {
+          replace: true,
+          state: null,
+        });
+
+        return;
+      }
+
+      // Allow the homepage time to render.
+      if (attempts < 15) {
+        attempts += 1;
+        frameId = requestAnimationFrame(
+          findSection
+        );
+      }
+    };
+
+    frameId = requestAnimationFrame(findSection);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+    };
+  }, [
+    location.pathname,
+    location.state,
+    navigate,
+  ]);
+
+  // GO TO HOMEPAGE
+  const goHome = () => {
+    closePanels();
+
+    navigate("/", {
+      state: null,
+    });
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // SWITCH BETWEEN WOMEN AND MEN
+  const handleGenderSwitch = (nextGender) => {
+    switchGender(nextGender);
+
+    closePanels();
+
+    navigate("/", {
+      state: null,
+    });
+
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
   };
 
   // TOGGLE MOBILE MENU
@@ -127,11 +300,15 @@ function Navbar() {
 
   return (
     <motion.header
-      className="navbar"
+      className={`navbar ${
+        isMen ? "allino-men-navbar" : ""
+      }`}
       initial={{ y: "-100%" }}
       animate={{
         y:
-          showNavbar || menuOpen || searchOpen
+          showNavbar ||
+          menuOpen ||
+          searchOpen
             ? "0%"
             : "-100%",
       }}
@@ -149,10 +326,16 @@ function Navbar() {
       {/* MAIN NAVBAR */}
 
       <nav className="nav-container">
+        {/* MOBILE MENU BUTTON */}
+
         <button
           type="button"
           className="mobile-menu"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={
+            menuOpen
+              ? "Close menu"
+              : "Open menu"
+          }
           aria-expanded={menuOpen}
           aria-controls="allino-mobile-navigation"
           onClick={toggleMenu}
@@ -165,7 +348,7 @@ function Navbar() {
         <Link
           to="/"
           className="logo"
-          onClick={closePanels}
+          onClick={goHome}
         >
           ALLINO<span>.</span>
         </Link>
@@ -173,34 +356,108 @@ function Navbar() {
         {/* DESKTOP NAVIGATION */}
 
         <div className="nav-links">
-          <Link to="/" onClick={closePanels}>
+          <button
+            type="button"
+            onClick={goHome}
+          >
             Home
-          </Link>
+          </button>
 
-          <a href="/#shop" onClick={closePanels}>
+          <button
+            type="button"
+            onClick={() =>
+              scrollToSection("shop")
+            }
+          >
             Shop
-          </a>
+          </button>
 
-          <a href="/#categories" onClick={closePanels}>
+          <button
+            type="button"
+            onClick={() =>
+              scrollToSection("categories")
+            }
+          >
             Categories
-          </a>
+          </button>
 
-          <a href="/#about" onClick={closePanels}>
+          <button
+            type="button"
+            onClick={() =>
+              scrollToSection("about")
+            }
+          >
             About
-          </a>
+          </button>
+        </div>
+
+        {/* WOMEN / MEN SWITCH */}
+
+        <div
+          className="allino-gender-switch"
+          role="group"
+          aria-label="Shop by collection"
+        >
+          <button
+            type="button"
+            className={`allino-gender-option ${
+              gender === "women"
+                ? "active"
+                : ""
+            }`}
+            onClick={() =>
+              handleGenderSwitch("women")
+            }
+            aria-pressed={
+              gender === "women"
+            }
+          >
+            WOMEN
+          </button>
+
+          <span className="allino-gender-divider" />
+
+          <button
+            type="button"
+            className={`allino-gender-option ${
+              gender === "men"
+                ? "active"
+                : ""
+            }`}
+            onClick={() =>
+              handleGenderSwitch("men")
+            }
+            aria-pressed={
+              gender === "men"
+            }
+          >
+            MEN
+          </button>
         </div>
 
         {/* NAVBAR ICONS */}
 
         <div className="nav-icons">
+          {/* SEARCH */}
+
           <button
             type="button"
-            aria-label={searchOpen ? "Close search" : "Search"}
+            aria-label={
+              searchOpen
+                ? "Close search"
+                : "Search"
+            }
             aria-expanded={searchOpen}
             onClick={toggleSearch}
           >
-            {searchOpen ? <FiX /> : <FiSearch />}
+            {searchOpen ? (
+              <FiX />
+            ) : (
+              <FiSearch />
+            )}
           </button>
+
+          {/* WISHLIST */}
 
           <Link
             to="/wishlist"
@@ -211,6 +468,8 @@ function Navbar() {
             <FiHeart />
             <span>{wishlistCount}</span>
           </Link>
+
+          {/* CART */}
 
           <Link
             to="/cart"
@@ -224,28 +483,90 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE DROPDOWN MENU */}
+      {/* MOBILE NAVIGATION */}
 
       {menuOpen && (
         <div
           id="allino-mobile-navigation"
           className="mobile-nav mobile-nav-open"
         >
-          <Link to="/" onClick={closePanels}>
+          {/* MOBILE GENDER SWITCH */}
+
+          <div
+            className="allino-mobile-gender-switch"
+            role="group"
+            aria-label="Shop by collection"
+          >
+            <button
+              type="button"
+              className={
+                gender === "women"
+                  ? "active"
+                  : ""
+              }
+              onClick={() =>
+                handleGenderSwitch("women")
+              }
+              aria-pressed={
+                gender === "women"
+              }
+            >
+              WOMEN
+            </button>
+
+            <button
+              type="button"
+              className={
+                gender === "men"
+                  ? "active"
+                  : ""
+              }
+              onClick={() =>
+                handleGenderSwitch("men")
+              }
+              aria-pressed={
+                gender === "men"
+              }
+            >
+              MEN
+            </button>
+          </div>
+
+          {/* MOBILE LINKS */}
+
+          <button
+            type="button"
+            onClick={goHome}
+          >
             Home
-          </Link>
+          </button>
 
-          <a href="/#shop" onClick={closePanels}>
+          <button
+            type="button"
+            onClick={() =>
+              scrollToSection("shop")
+            }
+          >
             Shop
-          </a>
+          </button>
 
-          <a href="/#categories" onClick={closePanels}>
+          <button
+            type="button"
+            onClick={() =>
+              scrollToSection("categories")
+            }
+          >
             Categories
-          </a>
+          </button>
 
-          <a href="/#about" onClick={closePanels}>
+          <button
+            type="button"
+            onClick={() =>
+              scrollToSection("about")
+            }
+          >
             About
-          </a>
+          </button>
         </div>
       )}
 
@@ -260,12 +581,19 @@ function Navbar() {
 
           <motion.div
             className="allino-search-panel"
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
+            initial={{
+              opacity: 0,
+              y: -15,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
           >
             <div className="allino-search-container">
-
               {/* SEARCH HEADING */}
 
               <div className="allino-search-heading">
@@ -289,11 +617,17 @@ function Navbar() {
                 <input
                   ref={searchInputRef}
                   type="search"
-                  placeholder="Search dresses, bags, accessories..."
+                  placeholder={
+                    isMen
+                      ? "Search shirts, jackets, watches..."
+                      : "Search dresses, bags, accessories..."
+                  }
                   aria-label="Search products"
                   value={searchQuery}
                   onChange={(event) =>
-                    setSearchQuery(event.target.value)
+                    setSearchQuery(
+                      event.target.value
+                    )
                   }
                 />
 
@@ -303,6 +637,7 @@ function Navbar() {
                     aria-label="Clear search"
                     onClick={() => {
                       setSearchQuery("");
+
                       searchInputRef.current?.focus();
                     }}
                   >
@@ -318,15 +653,19 @@ function Navbar() {
                   <h4>POPULAR SEARCHES</h4>
 
                   <div className="allino-search-tags">
-                    {popularSearches.map((item) => (
-                      <button
-                        key={item}
-                        type="button"
-                        onClick={() => setSearchQuery(item)}
-                      >
-                        {item}
-                      </button>
-                    ))}
+                    {popularSearches.map(
+                      (item) => (
+                        <button
+                          key={item}
+                          type="button"
+                          onClick={() =>
+                            setSearchQuery(item)
+                          }
+                        >
+                          {item}
+                        </button>
+                      )
+                    )}
                   </div>
                 </div>
               )}
@@ -335,102 +674,184 @@ function Navbar() {
 
               {searchQuery.trim() && (
                 <div className="allino-search-results">
-
-                  <p className="allino-search-count" aria-live="polite">
+                  <p
+                    className="allino-search-count"
+                    aria-live="polite"
+                  >
                     {filteredProducts.length}{" "}
                     {filteredProducts.length === 1
                       ? "product"
                       : "products"}{" "}
-                    found for "{searchQuery.trim()}"
+                    found for "
+                    {searchQuery.trim()}"
                   </p>
 
                   {filteredProducts.length > 0 ? (
-                    filteredProducts.map((product) => {
-                      const isWishlisted = wishlist.some(
-                        (item) => item.id === product.id
-                      );
+                    filteredProducts.map(
+                      (product) => {
+                        const isWishlisted =
+                          wishlist.some(
+                            (item) =>
+                              item.id ===
+                              product.id
+                          );
 
-                      return (
-                        <div
-                          className="allino-search-product"
-                          key={product.id}
-                        >
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                          />
+                        const isInCart =
+                          cart.some(
+                            (item) =>
+                              item.id ===
+                              product.id
+                          );
 
-                          <div className="allino-search-product-info">
-                            <span>{product.category}</span>
+                        return (
+                          <div
+                            className="allino-search-product"
+                            key={product.id}
+                          >
+                            {/* PRODUCT IMAGE */}
 
-                            <h3>{product.name}</h3>
+                            <Link
+                              to={`/product/${product.id}`}
+                              onClick={closePanels}
+                            >
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                              />
+                            </Link>
 
-                            <div className="allino-search-price">
-                              <strong>
-                                ₹{product.price.toLocaleString("en-IN")}
-                              </strong>
+                            {/* PRODUCT DETAILS */}
 
-                              {product.oldPrice && (
-                                <del>
-                                  ₹{product.oldPrice.toLocaleString("en-IN")}
-                                </del>
-                              )}
+                            <div className="allino-search-product-info">
+                              <span>
+                                {product.category}
+                              </span>
+
+                              <Link
+                                to={`/product/${product.id}`}
+                                onClick={closePanels}
+                              >
+                                <h3>
+                                  {product.name}
+                                </h3>
+                              </Link>
+
+                              <div className="allino-search-price">
+                                <strong>
+                                  ₹
+                                  {product.price.toLocaleString(
+                                    "en-IN"
+                                  )}
+                                </strong>
+
+                                {product.oldPrice && (
+                                  <del>
+                                    ₹
+                                    {product.oldPrice.toLocaleString(
+                                      "en-IN"
+                                    )}
+                                  </del>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* PRODUCT ACTIONS */}
+
+                            <div className="allino-search-actions">
+                              {/* WISHLIST BUTTON */}
+
+                              <button
+                                type="button"
+                                aria-label={
+                                  isWishlisted
+                                    ? "Remove from wishlist"
+                                    : "Add to wishlist"
+                                }
+                                aria-pressed={
+                                  isWishlisted
+                                }
+                                className={`allino-search-heart ${
+                                  isWishlisted
+                                    ? "active"
+                                    : ""
+                                }`}
+                                onClick={() =>
+                                  toggleWishlist(
+                                    product
+                                  )
+                                }
+                              >
+                                <FiHeart
+                                  fill={
+                                    isWishlisted
+                                      ? "currentColor"
+                                      : "none"
+                                  }
+                                />
+                              </button>
+
+                              {/* ADD TO CART BUTTON */}
+
+                              <button
+                                type="button"
+                                className={`allino-search-add ${
+                                  isInCart
+                                    ? "is-added"
+                                    : ""
+                                }`}
+                                onClick={() => {
+                                  if (!isInCart) {
+                                    addToCart(
+                                      product
+                                    );
+                                  }
+                                }}
+                                aria-label={
+                                  isInCart
+                                    ? "Already added to cart"
+                                    : "Add to bag"
+                                }
+                              >
+                                {isInCart ? (
+                                  <>
+                                    <FiCheck />
+                                    <span>
+                                      Added to Cart
+                                    </span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <FiShoppingBag />
+                                    <span>
+                                      Add to Bag
+                                    </span>
+                                  </>
+                                )}
+                              </button>
                             </div>
                           </div>
-
-                          <div className="allino-search-actions">
-
-                            <button
-                              type="button"
-                              aria-label={
-                                isWishlisted
-                                  ? "Remove from wishlist"
-                                  : "Add to wishlist"
-                              }
-                              aria-pressed={isWishlisted}
-                              className={`allino-search-heart ${
-                                isWishlisted ? "active" : ""
-                              }`}
-                              onClick={() =>
-                                toggleWishlist(product)
-                              }
-                            >
-                              <FiHeart
-                                fill={
-                                  isWishlisted
-                                    ? "currentColor"
-                                    : "none"
-                                }
-                              />
-                            </button>
-
-                            <button
-                              type="button"
-                              className="allino-search-add"
-                              onClick={() => addToCart(product)}
-                            >
-                              <FiShoppingBag />
-                              <span>Add to Bag</span>
-                            </button>
-
-                          </div>
-                        </div>
-                      );
-                    })
+                        );
+                      }
+                    )
                   ) : (
                     <div className="allino-no-results">
                       <FiSearch />
 
-                      <h3>No products found</h3>
+                      <h3>
+                        No products found
+                      </h3>
 
                       <p>
-                        Try searching for another product
-                        or category.
+                        Try searching for
+                        another product or
+                        category.
                       </p>
 
                       <button
                         type="button"
-                        onClick={() => setSearchQuery("")}
+                        onClick={() =>
+                          setSearchQuery("")
+                        }
                       >
                         Clear Search
                       </button>
@@ -438,7 +859,6 @@ function Navbar() {
                   )}
                 </div>
               )}
-
             </div>
           </motion.div>
         </>

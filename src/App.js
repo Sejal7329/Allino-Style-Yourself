@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import { ShopProvider } from "./Context/ShopContext";
+import { GenderProvider } from "./Context/GenderContext";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -20,16 +21,32 @@ import "./App.css";
 function App() {
   return (
     <ShopProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/category/:categoryName" element={<Category />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-        </Routes>
-      </BrowserRouter>
+      <GenderProvider>
+        <BrowserRouter>
+          <Navbar />
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+
+            <Route path="/cart" element={<Cart />} />
+
+            <Route
+              path="/wishlist"
+              element={<Wishlist />}
+            />
+
+            <Route
+              path="/category/:categoryName"
+              element={<Category />}
+            />
+
+            <Route
+              path="/product/:id"
+              element={<ProductDetails />}
+            />
+          </Routes>
+        </BrowserRouter>
+      </GenderProvider>
     </ShopProvider>
   );
 }

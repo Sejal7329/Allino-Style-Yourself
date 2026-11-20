@@ -7,10 +7,15 @@ import ProductCard from "../components/ProductCard";
 import { trendingProducts } from "../data/products";
 import { useShop } from "../Context/ShopContext";
 import CategorySlider from "../components/CategorySlider";
+import { useGender } from "../Context/GenderContext";
+import MenHome from "./MenHome";
 
 export default function Home() {
   const { addToCart, wishlist, toggleWishlist } = useShop();
-
+  const { isMen } = useGender();
+  if (isMen) {
+  return <MenHome />;
+}
   return (
     <main>
 

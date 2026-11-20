@@ -67,13 +67,21 @@
   gap: 38px;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links button {
   font-size: 13px;
   font-weight: 600;
   transition: color 0.3s;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links button:hover {
   color: var(--wine);
 }
 
@@ -1523,10 +1531,6 @@
   will-change: transform;
 }
 
-.navbar-hidden {
-  transform: translateY(-100%);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .navbar {
     transition: none;
@@ -1578,32 +1582,41 @@
   }
 
   .mobile-nav-open {
-    max-height: 300px;
+    max-height: 440px;
     opacity: 1;
     visibility: visible;
     border-top: 1px solid #e9dfd9;
     box-shadow: 0 12px 20px #00000012;
   }
 
-  .mobile-nav a {
+  .mobile-nav > a,
+  .mobile-nav > button {
     display: block;
     padding: 16px 7%;
     color: var(--dark);
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
+    border: none;
+    background: transparent;
+    text-align: left;
+    width: 100%;
+    font-family: inherit;
+    cursor: pointer;
     border-bottom: 1px solid #e9dfd9;
     transition:
       background 0.2s,
       color 0.2s;
   }
 
-  .mobile-nav a:hover {
+  .mobile-nav > a:hover,
+  .mobile-nav > button:hover {
     background: #f3eae2;
     color: var(--wine);
   }
 
-  .mobile-nav a:last-child {
+  .mobile-nav > a:last-child,
+  .mobile-nav > button:last-child {
     border-bottom: none;
   }
 }
@@ -1784,7 +1797,7 @@
   border-bottom: none;
 }
 
-.allino-search-product > img {
+.allino-search-product > a img {
   width: 85px;
   height: 105px;
   object-fit: cover;
@@ -1951,7 +1964,7 @@
     padding: 15px 0;
   }
 
-  .allino-search-product > img {
+  .allino-search-product > a img {
     width: 70px;
     height: 90px;
     grid-row: span 2;
@@ -2113,23 +2126,6 @@
 ======================================== */
 
 @media (max-width: 700px) {
-  .allino-collection-header {
-    padding: 25px 5% 40px;
-  }
-
-  .allino-breadcrumb {
-    margin-bottom: 25px;
-    font-size: 11px;
-  }
-
-  .allino-collection-header h1 {
-    font-size: 36px;
-  }
-
-  .allino-collection-description {
-    font-size: 13px;
-  }
-
   .allino-collection-filters {
     justify-content: flex-start;
     flex-wrap: nowrap;
@@ -3047,3 +3043,757 @@
     padding: 22px;
   }
 }
+
+
+/* ADDED TO CART — ALWAYS VISIBLE */
+.product-card .quick-add.added-to-cart {
+  background: var(--wine);
+  color: #fff;
+  border: 1px solid var(--wine);
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  cursor: default;
+}
+.product-card .quick-add.added-to-cart svg { font-size: 18px; stroke-width: 3; }
+.product-card:hover .quick-add.added-to-cart { background: var(--wine-dark); color: #fff; }
+
+/* ==========================================
+   ALLINO WOMEN / MEN NAVBAR SWITCH
+========================================== */
+
+.allino-gender-switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 14px;
+  border: 1px solid #e5dcd9;
+  border-radius: 30px;
+  background: #f9f6f0;
+  flex-shrink: 0;
+}
+
+.allino-gender-option {
+  border: none;
+  background: transparent;
+  color: #827a75;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.allino-gender-option.active {
+  color: #722f45;
+}
+
+.allino-gender-divider {
+  width: 1px;
+  height: 15px;
+  background: #d9cdca;
+}
+
+/* SEARCH BUTTON ADDED STATE */
+
+.allino-search-add.is-added {
+  background: #722f45;
+  color: #fff;
+  cursor: default;
+}
+
+/* MOBILE GENDER SWITCH */
+
+.allino-mobile-gender-switch {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .allino-gender-switch {
+    display: none;
+  }
+
+  .allino-mobile-gender-switch {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e5dcd9;
+  }
+
+  .allino-mobile-gender-switch button {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #e5dcd9;
+    border-radius: 6px;
+    background: transparent;
+    color: #827a75;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+
+  .allino-mobile-gender-switch button.active {
+    background: #722f45;
+    border-color: #722f45;
+    color: #fff;
+  }
+
+
+}
+
+
+/* ==========================================
+   ALLINO MEN — PREMIUM HOMEPAGE
+========================================== */
+
+.allino-men-home {
+  background: #f8f9f7;
+  color: #172b42;
+  overflow: hidden;
+}
+
+/* HERO */
+
+.allino-men-hero {
+  min-height: 680px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background: #f8f9f7;
+}
+
+.allino-men-hero-content {
+  padding: 110px 8% 55px 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.allino-men-eyebrow {
+  color: #34495e;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.allino-men-hero h1 {
+  font-size: clamp(58px, 7vw, 112px);
+  line-height: 0.95;
+  letter-spacing: -4px;
+  font-weight: 800;
+  margin: 35px 0;
+  color: #172b42;
+}
+
+.allino-men-hero h1 em {
+  color: #34495e;
+  font-style: normal;
+}
+
+.allino-men-hero-content > p {
+  max-width: 440px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #667789;
+  margin-bottom: 35px;
+}
+
+.allino-men-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: fit-content;
+  background: #34495e;
+  color: #f8f9f7;
+  padding: 17px 25px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.allino-men-primary-btn:hover {
+  background: #172b42;
+  color: #f8f9f7;
+}
+
+.allino-men-hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 85px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #8b8d90;
+}
+
+.allino-men-hero-image {
+  position: relative;
+  min-height: 680px;
+}
+
+.allino-men-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  position: absolute;
+  inset: 0;
+}
+
+.allino-men-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(23, 26, 30, 0.35),
+    transparent 55%
+  );
+}
+
+/* EDITORIAL STRIP */
+
+.allino-men-marquee {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 23px 5%;
+  background: #34495e;
+  color: #f8f9f7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.allino-men-marquee-dot {
+  font-size: 16px;
+}
+
+/* SHARED SECTION STYLING */
+
+.allino-men-section {
+  padding: 100px 7%;
+}
+
+.allino-men-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 45px;
+}
+
+.allino-men-section-heading span {
+  display: block;
+  margin-bottom: 15px;
+  color: #34495e;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.allino-men-section-heading h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #172b42;
+}
+
+.allino-men-section-heading p {
+  max-width: 300px;
+  color: #667789;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+/* CATEGORIES */
+
+.allino-men-categories {
+  background: #f8f9f7;
+}
+
+.allino-men-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.allino-men-category-card {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  background: #ffffff;
+  text-decoration: none;
+}
+
+.allino-men-category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.allino-men-category-card:hover img {
+  transform: scale(1.07);
+}
+
+.allino-men-category-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding: 28px;
+  background: linear-gradient(
+    transparent 45%,
+    rgba(0, 0, 0, 0.85)
+  );
+  color: #fff;
+}
+
+.allino-men-category-overlay h3 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.allino-men-category-overlay svg {
+  font-size: 22px;
+  color: #34495e;
+}
+
+/* PRODUCTS */
+
+.allino-men-products {
+  background: #edf1f4;
+}
+
+.allino-men-products .product-grid {
+  margin-top: 20px;
+}
+
+.allino-men-products .product-card {
+  background: #ffffff;
+}
+
+.allino-men-products .product-info {
+  padding: 18px;
+}
+
+.allino-men-products .product-info p {
+  color: #667789;
+}
+
+.allino-men-products .product-info h3 {
+  color: #172b42;
+}
+
+.allino-men-products .product-price strong {
+  color: #34495e;
+}
+
+.allino-men-empty {
+  color: #667789;
+}
+
+/* PROMOTIONAL BANNER */
+
+.allino-men-promo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 550px;
+}
+
+.allino-men-promo-image {
+  min-height: 550px;
+}
+
+.allino-men-promo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.allino-men-promo-content {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 70px 12%;
+}
+
+.allino-men-promo-content > span {
+  color: #34495e;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.allino-men-promo-content h2 {
+  font-size: clamp(42px, 5vw, 75px);
+  line-height: 1.05;
+  color: #172b42;
+  margin: 30px 0;
+}
+
+.allino-men-promo-content p {
+  color: #667789;
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 420px;
+  margin-bottom: 35px;
+}
+
+.allino-men-promo-content a {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  color: #34495e;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  border-bottom: 1px solid #34495e;
+  padding-bottom: 10px;
+}
+
+/* NEWSLETTER */
+
+.allino-men-newsletter {
+  text-align: center;
+  padding: 100px 20px;
+  background: #f8f9f7;
+}
+
+.allino-men-newsletter > span {
+  color: #34495e;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.allino-men-newsletter h2 {
+  color: #172b42;
+  font-size: clamp(28px, 4vw, 48px);
+  margin: 20px 0;
+}
+
+.allino-men-newsletter > p {
+  color: #667789;
+  margin-bottom: 35px;
+}
+
+.allino-men-newsletter form {
+  display: flex;
+  max-width: 530px;
+  margin: 0 auto;
+}
+
+.allino-men-newsletter input {
+  flex: 1;
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #c6d0d9;
+  padding: 18px;
+  color: #fff;
+  outline: none;
+}
+
+.allino-men-newsletter button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: #34495e;
+  color: #f8f9f7;
+  padding: 18px 24px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* FOOTER */
+
+.allino-men-footer {
+  background: #172b42;
+  padding: 70px 7% 25px;
+}
+
+.allino-men-footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 70px;
+}
+
+.allino-men-footer-top h2 {
+  font-size: 42px;
+  letter-spacing: -2px;
+  color: #172b42;
+}
+
+.allino-men-footer-top h2 span {
+  color: #34495e;
+}
+
+.allino-men-footer-top p {
+  color: #667789;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+.allino-men-footer-links {
+  display: flex;
+  gap: 100px;
+}
+
+.allino-men-footer-links h3 {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #34495e;
+  margin-bottom: 22px;
+}
+
+.allino-men-footer-links a {
+  display: block;
+  color: #667789;
+  text-decoration: none;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.allino-men-footer-links a:hover {
+  color: #34495e;
+}
+
+.allino-men-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid #40546a;
+  padding-top: 25px;
+  color: #777d83;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .allino-men-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .allino-men-hero-content {
+    padding: 80px 7% 50px;
+  }
+
+  .allino-men-hero-image {
+    min-height: 500px;
+  }
+
+  .allino-men-hero-bottom {
+    margin-top: 50px;
+  }
+
+  .allino-men-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .allino-men-section {
+    padding: 70px 5%;
+  }
+
+  .allino-men-promo {
+    grid-template-columns: 1fr;
+  }
+
+  .allino-men-promo-image {
+    min-height: 420px;
+  }
+
+  .allino-men-footer-links {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .allino-men-hero h1 {
+    font-size: 58px;
+    letter-spacing: -2px;
+  }
+
+  .allino-men-hero-image {
+    min-height: 380px;
+  }
+
+  .allino-men-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .allino-men-category-card {
+    height: 230px;
+  }
+
+  .allino-men-category-overlay {
+    padding: 15px;
+  }
+
+  .allino-men-category-overlay h3 {
+    font-size: 17px;
+  }
+
+  .allino-men-section-heading {
+    display: block;
+  }
+
+  .allino-men-section-heading p {
+    margin-top: 20px;
+  }
+
+  .allino-men-marquee {
+    gap: 12px;
+    font-size: 9px;
+  }
+
+  .allino-men-promo-content {
+    padding: 70px 7%;
+  }
+
+  .allino-men-newsletter form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .allino-men-newsletter button {
+    justify-content: center;
+  }
+
+  .allino-men-footer-top,
+  .allino-men-footer-bottom {
+    flex-direction: column;
+  }
+
+  .allino-men-footer-links {
+    gap: 30px;
+  }
+}
+
+
+/* ==========================================
+   ALLINO MEN — NAVY & OFF-WHITE THEME
+   All overrides scoped to Men mode.
+========================================== */
+body[data-shopping-mode="men"] {
+  --men-background: #f8f9f7;
+  --men-surface: #fff;
+  --men-soft: #dce3e8;
+  --men-navy: #172b42;
+  --men-slate: #34495e;
+  --men-muted: #667789;
+  background: var(--men-background);
+  color: var(--men-navy);
+}
+body[data-shopping-mode="men"] .navbar { background: #fff; color: #172b42; border-bottom: 1px solid #dce3e8; }
+body[data-shopping-mode="men"] .nav-top { background: #172b42; color: #fff; }
+body[data-shopping-mode="men"] .navbar .logo,
+body[data-shopping-mode="men"] .navbar .nav-links a,
+body[data-shopping-mode="men"] .navbar .nav-links button,
+body[data-shopping-mode="men"] .navbar .nav-icons a,
+body[data-shopping-mode="men"] .navbar .nav-icons button,
+body[data-shopping-mode="men"] .navbar .mobile-menu { color: #172b42; }
+body[data-shopping-mode="men"] .navbar .logo span { color: #34495e; }
+body[data-shopping-mode="men"] .nav-links a:hover,
+body[data-shopping-mode="men"] .nav-links button:hover,
+body[data-shopping-mode="men"] .nav-icons a:hover,
+body[data-shopping-mode="men"] .nav-icons button:hover { color: #55738f; }
+body[data-shopping-mode="men"] .allino-gender-switch { background: #f1f4f6; border-color: #dce3e8; }
+body[data-shopping-mode="men"] .allino-gender-option { color: #778596; }
+body[data-shopping-mode="men"] .allino-gender-option.active { color: #172b42; }
+body[data-shopping-mode="men"] .allino-gender-divider { background: #c6d0d9; }
+body[data-shopping-mode="men"] .allino-men-home,
+body[data-shopping-mode="men"] .allino-men-hero,
+body[data-shopping-mode="men"] .allino-men-categories { background: #f8f9f7; color: #172b42; }
+body[data-shopping-mode="men"] .allino-men-eyebrow { color: #34495e; }
+body[data-shopping-mode="men"] .allino-men-hero h1 { color: #172b42; }
+body[data-shopping-mode="men"] .allino-men-hero h1 em { color: #55738f; }
+body[data-shopping-mode="men"] .allino-men-hero-content > p { color: #667789; }
+body[data-shopping-mode="men"] .allino-men-primary-btn { background: #172b42; color: #fff; }
+body[data-shopping-mode="men"] .allino-men-primary-btn:hover { background: #34495e; color: #fff; }
+body[data-shopping-mode="men"] .allino-men-hero-bottom { color: #778596; }
+body[data-shopping-mode="men"] .allino-men-image-overlay { background: linear-gradient(90deg,rgba(248,249,247,.12),transparent 60%); }
+body[data-shopping-mode="men"] .allino-men-marquee { background: #172b42; color: #fff; }
+body[data-shopping-mode="men"] .allino-men-marquee-dot { color: #b9cad8; }
+body[data-shopping-mode="men"] .allino-men-section-heading span { color: #55738f; }
+body[data-shopping-mode="men"] .allino-men-section-heading h2 { color: #172b42; }
+body[data-shopping-mode="men"] .allino-men-section-heading p { color: #667789; }
+body[data-shopping-mode="men"] .allino-men-category-card { background: #dce3e8; }
+body[data-shopping-mode="men"] .allino-men-category-overlay { background: linear-gradient(transparent 40%,rgba(12,28,45,.8)); }
+body[data-shopping-mode="men"] .allino-men-category-overlay h3 { color: #fff; }
+body[data-shopping-mode="men"] .allino-men-category-overlay svg { color: #dce3e8; }
+body[data-shopping-mode="men"] .allino-men-products { background: #edf1f4; }
+body[data-shopping-mode="men"] .product-card { background: #fff; color: #172b42; }
+body[data-shopping-mode="men"] .product-info p { color: #778596; }
+body[data-shopping-mode="men"] .product-info h3 { color: #172b42; }
+body[data-shopping-mode="men"] .product-price strong { color: #34495e; }
+body[data-shopping-mode="men"] .quick-add { background: #172b42; color: #fff; }
+body[data-shopping-mode="men"] .quick-add:hover { background: #34495e; color: #fff; }
+body[data-shopping-mode="men"] .product-card .quick-add.added-to-cart,
+body[data-shopping-mode="men"] .product-card:hover .quick-add.added-to-cart { background: #34495e; border-color: #34495e; color: #fff; }
+body[data-shopping-mode="men"] .allino-men-promo-content { background: #dce3e8; }
+body[data-shopping-mode="men"] .allino-men-promo-content > span { color: #55738f; }
+body[data-shopping-mode="men"] .allino-men-promo-content h2 { color: #172b42; }
+body[data-shopping-mode="men"] .allino-men-promo-content p { color: #526578; }
+body[data-shopping-mode="men"] .allino-men-promo-content a { color: #172b42; border-bottom-color: #172b42; }
+body[data-shopping-mode="men"] .allino-men-newsletter { background: #f8f9f7; }
+body[data-shopping-mode="men"] .allino-men-newsletter > span { color: #55738f; }
+body[data-shopping-mode="men"] .allino-men-newsletter h2 { color: #172b42; }
+body[data-shopping-mode="men"] .allino-men-newsletter > p { color: #667789; }
+body[data-shopping-mode="men"] .allino-men-newsletter input { background: #fff; border: 1px solid #c6d0d9; color: #172b42; }
+body[data-shopping-mode="men"] .allino-men-newsletter button { background: #172b42; color: #fff; }
+body[data-shopping-mode="men"] .allino-men-footer { background: #172b42; color: #fff; }
+body[data-shopping-mode="men"] .allino-men-footer-top h2 { color: #fff; }
+body[data-shopping-mode="men"] .allino-men-footer-top h2 span { color: #b9cad8; }
+body[data-shopping-mode="men"] .allino-men-footer-top p,
+body[data-shopping-mode="men"] .allino-men-footer-links a { color: #c3ced9; }
+body[data-shopping-mode="men"] .allino-men-footer-links h3 { color: #fff; }
+body[data-shopping-mode="men"] .allino-men-footer-links a:hover { color: #fff; }
+body[data-shopping-mode="men"] .allino-men-footer-bottom { border-top-color: #40546a; color: #c3ced9; }
+body[data-shopping-mode="men"] .allino-search-panel { background: #fff; color: #172b42; }
+body[data-shopping-mode="men"] .allino-search-heading h2,
+body[data-shopping-mode="men"] .allino-search-close,
+body[data-shopping-mode="men"] .allino-search-box > svg,
+body[data-shopping-mode="men"] .allino-search-price strong { color: #172b42; }
+body[data-shopping-mode="men"] .allino-search-add { background: #172b42; color: #fff; }
+body[data-shopping-mode="men"] .allino-search-add.is-added { background: #34495e; color: #fff; }
+body[data-shopping-mode="men"] .allino-search-heart { border-color: #172b42; color: #172b42; }
+body[data-shopping-mode="men"] .allino-search-heart.active,
+body[data-shopping-mode="men"] .allino-search-heart:hover { background: #172b42; color: #fff; }
+/* Collection page: visual theme only; product filtering remains in Category.js. */
+body[data-shopping-mode="men"] .allino-collection-page { background: #f8f9f7; }
+body[data-shopping-mode="men"] .allino-collection-filters { border-bottom-color: #dce3e8; }
+body[data-shopping-mode="men"] .allino-filter-button { color: #172b42; border-color: #c6d0d9; }
+body[data-shopping-mode="men"] .allino-filter-button:hover,
+body[data-shopping-mode="men"] .allino-filter-button.active { background: #172b42; border-color: #172b42; color: #fff; }
+body[data-shopping-mode="men"] .allino-collection-toolbar h2,
+body[data-shopping-mode="men"] .allino-collection-empty h2 { color: #172b42; }
+body[data-shopping-mode="men"] .allino-sort-select { color: #172b42; border-color: #c6d0d9; outline-color: #172b42; }
+body[data-shopping-mode="men"] .allino-collection-empty a { background: #172b42; }
+@media (max-width: 900px) {
+  body[data-shopping-mode="men"] .mobile-nav { background: #fff; }
+  body[data-shopping-mode="men"] .mobile-nav > a,
+  body[data-shopping-mode="men"] .mobile-nav > button { color: #172b42; border-bottom-color: #dce3e8; }
+  body[data-shopping-mode="men"] .allino-mobile-gender-switch { border-bottom-color: #dce3e8; }
+  body[data-shopping-mode="men"] .allino-mobile-gender-switch button { border-color: #c6d0d9; color: #34495e; }
+  body[data-shopping-mode="men"] .allino-mobile-gender-switch button.active { background: #172b42; border-color: #172b42; color: #fff; }
+}
+
+/* Anchor scrolling offset for sticky navigation */
+html { scroll-padding-top: 110px; }

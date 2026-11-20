@@ -17,7 +17,7 @@ const womenProducts = [
     type: "dresses",
     price: 1299,
     oldPrice: 1799,
-    image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600",
+    image: "https://i.pinimg.com/736x/62/8d/de/628dde57e59860664637737055e9fd3a.jpg",
     tag: "BESTSELLER",
   },
   {
@@ -29,33 +29,22 @@ const womenProducts = [
     type: "handbags",
     price: 1899,
     oldPrice: 2499,
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600",
+    image: "https://www.eliteswear.com/wp-content/uploads/2025/05/Classsic-Everyday-Bag-1.jpg",
     tag: "TRENDING",
   },
   {
     id: 3,
-    name: "Minimal Casual Outfit",
+    name: "Minimal Casual Top",
     category: "Women",
     gender: "women",
     collection: "clothing",
-    type: "co-ord-sets",
+    type: "tops",
     price: 1499,
     oldPrice: 1999,
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600",
+    image: "https://i.etsystatic.com/54314563/r/il/a7b9b8/6813269505/il_1588xN.6813269505_hrad.jpg",
     tag: "NEW",
   },
-  {
-    id: 4,
-    name: "Elegant Sunglasses",
-    category: "Accessories",
-    gender: "women",
-    collection: "accessories",
-    type: "sunglasses",
-    price: 899,
-    oldPrice: 1199,
-    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600",
-    tag: "POPULAR",
-  },
+ 
 
   // WOMEN'S CLOTHING
 
@@ -68,12 +57,12 @@ const womenProducts = [
     type: "dresses",
     price: 1799,
     oldPrice: 2499,
-    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&fit=crop&auto=format&q=80",
+    image: "https://octics.com/cdn/shop/files/07-01-2025-06075.jpg?v=1740123267&width=1100",
     tag: "NEW",
   },
   {
     id: 6,
-    name: "Classic Black Dress",
+    name: "Classic Slim Dress",
     category: "Women",
     gender: "women",
     collection: "clothing",
@@ -92,19 +81,19 @@ const womenProducts = [
     type: "dresses",
     price: 1499,
     oldPrice: 1999,
-    image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&fit=crop&auto=format&q=80",
+    image: "https://octics.com/cdn/shop/files/07-01-2025-07012.jpg?v=1740740840&width=1100",
     tag: "",
   },
   {
     id: 8,
-    name: "Classic Cotton Top",
+    name: "Knit Summer Crop Top",
     category: "Women",
     gender: "women",
     collection: "clothing",
     type: "tops",
     price: 799,
     oldPrice: 1099,
-    image: "https://images.unsplash.com/photo-1564257577054-84c4a4f46a4c?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/originals/ef/bb/8e/efbb8e01d758bf8061e10734bdc7749a.jpg",
     tag: "",
   },
   {
@@ -116,7 +105,7 @@ const womenProducts = [
     type: "tops",
     price: 699,
     oldPrice: 999,
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&fit=crop&auto=format&q=80",
+    image: "https://theform.com.sg/wp-content/uploads/2023/03/Basic-T-Shirt-Camel-2.jpg",
     tag: "",
   },
   {
@@ -128,7 +117,7 @@ const womenProducts = [
     type: "jeans",
     price: 1599,
     oldPrice: 2199,
-    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&fit=crop&auto=format&q=80",
+    image: "https://i5.walmartimages.com/seo/Necooer-Women-s-Denim-Jeans-High-Waist-Casual-Washed-Stretchy-Boyfriend-Trendy-Straight-Pants-Stretchy-Wide-Leg-Jeans_d5aed23b-4922-43e4-a098-ee671a89d4ec.2f945d3d5799d10d74ed7dec3a521934.jpeg",
     tag: "BESTSELLER",
   },
   {
@@ -140,7 +129,7 @@ const womenProducts = [
     type: "jeans",
     price: 1799,
     oldPrice: 2399,
-    image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/originals/f3/3b/f2/f33bf2b5496e412bcc10edcedfd83ff3.jpg",
     tag: "",
   },
   {
@@ -152,7 +141,7 @@ const womenProducts = [
     type: "shirts",
     price: 1199,
     oldPrice: 1699,
-    image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&fit=crop&auto=format&q=80",
+    image: "https://www.stfrock.com.au/cdn/shop/files/251009_StFrock_Maddie_AM_01250405-1-WHT_0284.jpg?v=1762908093",
     tag: "",
   },
   {
@@ -164,7 +153,7 @@ const womenProducts = [
     type: "co-ord-sets",
     price: 2199,
     oldPrice: 2999,
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/originals/18/36/18/183618d71df1bb707741f0f965ed9c46.png",
     tag: "NEW",
   },
   {
@@ -176,7 +165,7 @@ const womenProducts = [
     type: "skirts",
     price: 1099,
     oldPrice: 1499,
-    image: "https://images.unsplash.com/photo-1583496661160-fb5886a13d77?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/originals/32/41/a2/3241a2d5f503bdb7ebdb1c1d4c75c123.jpg",
     tag: "",
   },
 
@@ -215,19 +204,19 @@ const womenProducts = [
     type: "sling-bags",
     price: 1299,
     oldPrice: 1799,
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.etsystatic.com/63933906/r/il/fba747/7666322573/il_794xN.7666322573_46q5.jpg",
     tag: "",
   },
   {
     id: 18,
-    name: "Everyday Tote Bag",
+    name: "Woven Straw Tote Bag",
     category: "Accessories",
     gender: "women",
     collection: "bags",
     type: "tote-bags",
     price: 1499,
     oldPrice: 1999,
-    image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.etsystatic.com/48267469/r/il/a3baa8/5630864548/il_1080xN.5630864548_ln02.jpg",
     tag: "",
   },
   {
@@ -239,7 +228,7 @@ const womenProducts = [
     type: "handbags",
     price: 1599,
     oldPrice: 2199,
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&fit=crop&auto=format&q=80",
+    image: "https://www.liliorigin.com/cdn/shop/files/3x4_0002_Layer10.jpg?v=1741235916&width=1100",
     tag: "NEW",
   },
   {
@@ -251,7 +240,7 @@ const womenProducts = [
     type: "clutches",
     price: 1199,
     oldPrice: 1699,
-    image: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&fit=crop&auto=format&q=80",
+    image: "https://media.takealot.com/covers_tsins/61369927/61369927-1-zoom.jpeg",
     tag: "",
   },
   {
@@ -263,12 +252,23 @@ const womenProducts = [
     type: "handbags",
     price: 2999,
     oldPrice: 3999,
-    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&fit=crop&auto=format&q=80",
+    image: "https://www.fashiongonerogue.com/wp-content/uploads/2025/06/Structured-Tote-Bag-Dhanno.jpg",
     tag: "PREMIUM",
   },
 
   // WOMEN'S ACCESSORIES
-
+ {
+    id: 4,
+    name: "Elegant Sunglasses",
+    category: "Accessories",
+    gender: "women",
+    collection: "accessories",
+    type: "sunglasses",
+    price: 899,
+    oldPrice: 1199,
+    image: "https://i.etsystatic.com/41262467/r/il/8ffdb7/4710961260/il_fullxfull.4710961260_erzg.jpg",
+    tag: "POPULAR",
+  },
   {
     id: 22,
     name: "Classic Oversized Sunglasses",
@@ -278,7 +278,7 @@ const womenProducts = [
     type: "sunglasses",
     price: 999,
     oldPrice: 1399,
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&fit=crop&auto=format&q=80",
+    image: "https://n.nordstrommedia.com/it/59000976-644c-41ed-b976-3ddd2e5c0920.jpeg?h=368&w=240&dpr=2",
     tag: "",
   },
   {
@@ -290,7 +290,7 @@ const womenProducts = [
     type: "sunglasses",
     price: 799,
     oldPrice: 1199,
-    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.etsystatic.com/27602162/r/il/396fbd/5641164399/il_1080xN.5641164399_pyod.jpg",
     tag: "",
   },
   {
@@ -302,7 +302,7 @@ const womenProducts = [
     type: "watches",
     price: 2499,
     oldPrice: 3499,
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/f8/62/f5/f862f593557c2a4535ddf25eecd5af62.jpg",
     tag: "POPULAR",
   },
   {
@@ -314,7 +314,7 @@ const womenProducts = [
     type: "watches",
     price: 1999,
     oldPrice: 2799,
-    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&fit=crop&auto=format&q=80",
+    image: "https://down-ph.img.susercontent.com/file/cn-11134208-7r98o-loxlpyk17ae44a",
     tag: "",
   },
   {
@@ -326,7 +326,7 @@ const womenProducts = [
     type: "belts",
     price: 699,
     oldPrice: 999,
-    image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600&fit=crop&auto=format&q=80",
+    image: "https://www.mytheresa.com/image/356/402/30/05/P01056453_d1.jpg",
     tag: "",
   },
   {
@@ -338,7 +338,7 @@ const womenProducts = [
     type: "scarves",
     price: 899,
     oldPrice: 1299,
-    image: "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/originals/7f/e2/51/7fe251eb495826511f17a738486f6b45.jpg",
     tag: "",
   },
   {
@@ -350,7 +350,7 @@ const womenProducts = [
     type: "wallets",
     price: 999,
     oldPrice: 1499,
-    image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.etsystatic.com/15615725/r/il/96413b/5801302692/il_fullxfull.5801302692_l231.jpg",
     tag: "",
   },
 
@@ -365,7 +365,7 @@ const womenProducts = [
     type: "heels",
     price: 1899,
     oldPrice: 2599,
-    image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/32/f1/3d/32f13dd9526ceb9ee2034dcb45cdd803.jpg",
     tag: "BESTSELLER",
   },
   {
@@ -377,7 +377,7 @@ const womenProducts = [
     type: "sandals",
     price: 999,
     oldPrice: 1499,
-    image: "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/87/47/c2/8747c2885fb2fc157ebe3db52b5e0f9f.jpg",
     tag: "",
   },
   {
@@ -389,7 +389,7 @@ const womenProducts = [
     type: "sneakers",
     price: 1999,
     oldPrice: 2799,
-    image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/48/ee/7b/48ee7bbfd866a54b27b5cd28e1808ca8.jpg",
     tag: "TRENDING",
   },
   {
@@ -401,7 +401,7 @@ const womenProducts = [
     type: "heels",
     price: 2199,
     oldPrice: 2999,
-    image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&fit=crop&auto=format&q=80",
+    image: "https://server.berfin.com.bd/api/image/serve/675ec3bfef741d0372e8e691?width=1000&height=1000",
     tag: "",
   },
   {
@@ -418,26 +418,26 @@ const womenProducts = [
   },
   {
     id: 34,
-    name: "Everyday Chunky Sneakers",
+    name: "Ankle Boots ",
     category: "Footwear",
     gender: "women",
     collection: "footwear",
-    type: "sneakers",
+    type: "boots",
     price: 2299,
     oldPrice: 3199,
-    image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/originals/57/76/fe/5776fed6c17712f222dfe3b742836fcd.jpg",
     tag: "NEW",
   },
   {
     id: 35,
-    name: "Premium Ankle Boots",
+    name: "Premium High Knee Boots",
     category: "Footwear",
     gender: "women",
     collection: "footwear",
     type: "boots",
     price: 2799,
     oldPrice: 3699,
-    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/65/24/9a/65249a4e84f9137cd70082106f18e85f.jpg",
     tag: "",
   },
   {
@@ -449,7 +449,7 @@ const womenProducts = [
     type: "sandals",
     price: 899,
     oldPrice: 1299,
-    image: "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/originals/bf/45/f6/bf45f60421580667a950cda5768592cd.jpg",
     tag: "",
   },
 
@@ -464,7 +464,7 @@ const womenProducts = [
     type: "lipstick",
     price: 599,
     oldPrice: 899,
-    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/ea/83/95/ea839590545959c94c94675b8173c8cd.jpg",
     tag: "BESTSELLER",
   },
   {
@@ -476,7 +476,7 @@ const womenProducts = [
     type: "blush",
     price: 799,
     oldPrice: 1099,
-    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/ea/72/32/ea72329af296b3039a828d145c442f5f.jpg",
     tag: "",
   },
   {
@@ -488,7 +488,7 @@ const womenProducts = [
     type: "foundation",
     price: 1299,
     oldPrice: 1799,
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&fit=crop&auto=format&q=80",
+    image: "https://i0.wp.com/kalaluacr.com/wp-content/uploads/2022/12/Base-Flawless-Stay-Foundation-Kalalua.jpg",
     tag: "",
   },
   {
@@ -500,7 +500,7 @@ const womenProducts = [
     type: "skincare",
     price: 999,
     oldPrice: 1499,
-    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&fit=crop&auto=format&q=80",
+    image: "https://dermastore.co.za/wp-content/uploads/2024/08/melume-skinscience-hydrating-8ha-serum-2026-1400px.webp",
     tag: "TRENDING",
   },
   {
@@ -512,7 +512,7 @@ const womenProducts = [
     type: "makeup",
     price: 1199,
     oldPrice: 1699,
-    image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&fit=crop&auto=format&q=80",
+    image: "https://tse1.explicit.bing.net/th/id/OIP.qsyfMFNkLrwQlQiS2azErgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     tag: "",
   },
   {
@@ -524,7 +524,7 @@ const womenProducts = [
     type: "makeup-tools",
     price: 1499,
     oldPrice: 1999,
-    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/e1/49/cf/e149cfb8602ad49f7f1f5216ae918814.jpg",
     tag: "",
   },
   {
@@ -536,7 +536,7 @@ const womenProducts = [
     type: "perfumes",
     price: 1999,
     oldPrice: 2799,
-    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/ce/64/6d/ce646dd15d8df7c5fbe9a3b6654f1505.jpg",
     tag: "NEW",
   },
   {
@@ -548,23 +548,22 @@ const womenProducts = [
     type: "skincare",
     price: 799,
     oldPrice: 1199,
-    image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=600&fit=crop&auto=format&q=80",
+    image: "https://www.bbrose.com/media/products/hyaluronic-acid-moisturizing-cream.webp",
     tag: "",
   },
 
   // WOMEN'S JEWELRY
-
   {
-    id: 45,
-    name: "Minimal Gold Necklace",
+    id: 105,
+    name: "Artisan Gold Necklace",
     category: "Jewelry",
     gender: "women",
     collection: "jewelry",
     type: "necklaces",
-    price: 1299,
-    oldPrice: 1799,
-    image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&fit=crop&auto=format&q=80",
-    tag: "BESTSELLER",
+    price: 699,
+    oldPrice: 1899,
+    image: "https://i.etsystatic.com/38577855/c/1834/1834/23/94/il/487df9/4872548481/il_800x800.4872548481_dnm1.jpg",
+    tag: "",
   },
   {
     id: 46,
@@ -575,19 +574,19 @@ const womenProducts = [
     type: "earrings",
     price: 899,
     oldPrice: 1299,
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/21/6d/af/216dafddcfa6238ec1dda5052b8254bc.jpg",
     tag: "",
   },
   {
     id: 47,
-    name: "Classic Diamond Style Ring",
+    name: "Classic Diamond Ring",
     category: "Jewelry",
     gender: "women",
     collection: "jewelry",
     type: "rings",
     price: 1599,
     oldPrice: 2199,
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/77/86/02/7786025ed899b6f26c9783800cf2edf9.jpg",
     tag: "TRENDING",
   },
   {
@@ -599,9 +598,10 @@ const womenProducts = [
     type: "bracelets",
     price: 999,
     oldPrice: 1499,
-    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/7e/e7/c9/7ee7c9bace1847a8d1e3fe592e4f8dda.jpg",
     tag: "",
   },
+  
   {
     id: 49,
     name: "Elegant Layered Necklace",
@@ -611,19 +611,19 @@ const womenProducts = [
     type: "necklaces",
     price: 1799,
     oldPrice: 2499,
-    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/de/5b/2c/de5b2c96daca6a78af894875770fb5fa.jpg",
     tag: "",
   },
   {
     id: 50,
-    name: "Statement Gold Earrings",
+    name: "Gold Drop Earrings",
     category: "Jewelry",
     gender: "women",
     collection: "jewelry",
     type: "earrings",
     price: 1199,
     oldPrice: 1699,
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&fit=crop&auto=format&q=80",
+    image: "https://di2ponv0v5otw.cloudfront.net/posts/2024/02/01/65bbbb01ef1ef732ed791a46/m_66d780a8fe7e2cc67cd315fb.jpeg",
     tag: "NEW",
   },
   {
@@ -635,19 +635,19 @@ const womenProducts = [
     type: "rings",
     price: 799,
     oldPrice: 1199,
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/originals/95/0f/7d/950f7d2ac832e3ffd65a1efe9dbf8709.jpg",
     tag: "",
   },
   {
     id: 52,
-    name: "Luxury Jewelry Set",
+    name: "Luxury Gold Jewelry Set",
     category: "Jewelry",
     gender: "women",
     collection: "jewelry",
     type: "jewelry-sets",
     price: 2999,
     oldPrice: 3999,
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&fit=crop&auto=format&q=80",
+    image: "https://i.pinimg.com/736x/6c/6c/7e/6c6c7e92f577a85d295f05d2d3f776be.jpg",
     tag: "PREMIUM",
   },
 ];
@@ -1328,16 +1328,15 @@ const getProductsByGender = (gender = "women") => {
 // FILTER PRODUCTS BY COLLECTION
 // ==========================================
 
-const getProductsByCollection = (
-  collection,
-  gender = "women"
-) => {
+
+const getProductsByCollection = (collection, gender) => {
   return products.filter(
     (product) =>
       product.gender === gender &&
       product.collection === collection
   );
 };
+
 
 // ==========================================
 // FILTER PRODUCTS BY TYPE

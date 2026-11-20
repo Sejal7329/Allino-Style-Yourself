@@ -4,8 +4,9 @@ import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import ProductCard from "../components/ProductCard";
-import { womenProducts } from "../data/products";
+import products from "../data/products";
 import { useShop } from "../Context/ShopContext";
+import { useGender } from "../Context/GenderContext";
 
 // COLLECTION INFORMATION
 
@@ -40,10 +41,25 @@ const collectionDetails = {
     description:
       "Beautiful little details to make every moment shine.",
   },
+  grooming: {
+    title: "Grooming",
+    description:
+      "Discover everyday grooming essentials.",
+  },
+  watches: {
+    title: "Watches",
+    description:
+      "Explore timeless watches for every occasion.",
+  },
   women: {
     title: "Women",
     description:
       "Discover the complete ALLINO women's collection.",
+  },
+  men: {
+    title: "Men",
+    description:
+      "Discover the complete ALLINO men's collection.",
   },
 };
 
@@ -62,6 +78,8 @@ const formatName = (name) => {
 export default function Category() {
   const { categoryName } = useParams();
 
+  const { gender } = useGender();
+
   const { addToCart, wishlist, toggleWishlist } =
     useShop();
 
@@ -71,23 +89,42 @@ export default function Category() {
   const [sortBy, setSortBy] =
     useState("featured");
 
-  const slug = categoryName.toLowerCase();
+  const slug = (categoryName || "").toLowerCase();
 
-  // RESET FILTERS WHEN CATEGORY CHANGES
+  // HANDLE MEN AND WOMEN COLLECTIONS
+
+  const selectedGender =
+    slug === "men"
+      ? "men"
+      : slug === "women"
+      ? "women"
+      : gender === "men"
+      ? "men"
+      : "women";
+
+  // RESET FILTERS WHEN CATEGORY OR GENDER CHANGES
 
   useEffect(() => {
     setActiveFilter("all");
     setSortBy("featured");
     window.scrollTo(0, 0);
-  }, [slug]);
+  }, [slug, selectedGender]);
 
-  // ONLY WOMEN'S PRODUCTS
+  // FILTER PRODUCTS BY GENDER AND COLLECTION
 
-  const collectionProducts = womenProducts.filter(
-    (product) =>
-      slug === "women" ||
-      product.collection === slug ||
-      product.type === slug
+  const collectionProducts = products.filter(
+    (product) => {
+      const matchesGender =
+        product.gender === selectedGender;
+
+      const matchesCollection =
+        slug === "men" ||
+        slug === "women" ||
+        product.collection === slug ||
+        product.type === slug;
+
+      return matchesGender && matchesCollection;
+    }
   );
 
   // COLLECTION TITLE
@@ -95,7 +132,7 @@ export default function Category() {
   const details = collectionDetails[slug] || {
     title: formatName(slug),
     description:
-      "Discover beautiful styles that feel uniquely you.",
+      "Discover styles that feel uniquely you.",
   };
 
   // GENERATE SUBCATEGORY FILTERS AUTOMATICALLY
@@ -139,14 +176,12 @@ export default function Category() {
   return (
     <motion.main
       className="allino-collection-page"
-      key={slug}
+      key={`${selectedGender}-${slug}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-
-      
-
+    
       {/* SUBCATEGORY FILTERS */}
 
       {filters.length > 1 && (
@@ -174,13 +209,19 @@ export default function Category() {
       {/* COLLECTION CONTENT */}
 
       <section className="allino-collection-content">
-
+       
         {/* PRODUCT COUNT AND SORTING */}
 
         <div className="allino-collection-toolbar">
-
+         
           <div>
-            <h2>Explore {details.title}</h2>
+            <h2>
+              Explore{" "}
+              {selectedGender === "men"
+                ? "Men's"
+                : "Women's"}{" "}
+              {details.title}
+            </h2>
 
             <p className="allino-product-count">
               {sortedProducts.length}{" "}
@@ -211,8 +252,9 @@ export default function Category() {
             <option value="price-high">
               Price: High to Low
             </option>
+        
           </select>
-
+        
         </div>
 
         {/* PRODUCT GRID */}
@@ -231,7 +273,7 @@ export default function Category() {
           </div>
         ) : (
           <div className="allino-collection-empty">
-
+            
             <h2>No Products Found</h2>
 
             <p>
@@ -240,11 +282,12 @@ export default function Category() {
 
             <Link to="/">
               Continue Shopping →
+            
             </Link>
-
+          
           </div>
         )}
-
+    
       </section>
 
     </motion.main>

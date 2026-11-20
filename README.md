@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # ALLINO — Style Yourself 🛍️
 
@@ -128,3 +129,5 @@ This project is intended for learning, portfolio demonstration, and further deve
 **ALLINO — Style Yourself**
 
 *Discover your style. Express your individuality.*
+=======
+>>>>>>> b133bb4 (Update ALLINO website)

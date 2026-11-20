@@ -2,7 +2,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiHeart, FiShoppingBag } from "react-icons/fi";
+import {
+  FiHeart,
+  FiShoppingBag,
+  FiCheck,
+} from "react-icons/fi";
+
+import { useShop } from "../Context/ShopContext";
 
 function ProductCard({
   product,
@@ -10,9 +16,23 @@ function ProductCard({
   wishlist,
   toggleWishlist,
 }) {
-  const isWishlisted = wishlist.some(
+  const { cart } = useShop();
+
+  // Check whether this product is already in the cart
+  const isInCart = cart.some(
     (item) => item.id === product.id
   );
+
+  // Check wishlist status
+  const isWishlisted = (wishlist || []).some(
+    (item) => item.id === product.id
+  );
+
+  const handleAddToCart = () => {
+    if (!isInCart) {
+      addToCart(product);
+    }
+  };
 
   return (
     <motion.div
@@ -20,6 +40,8 @@ function ProductCard({
       whileHover={{ y: -8 }}
     >
       <div className="product-image">
+
+        {/* PRODUCT IMAGE */}
 
         <Link
           to={`/product/${product.id}`}
@@ -32,11 +54,15 @@ function ProductCard({
           />
         </Link>
 
+        {/* PRODUCT TAG */}
+
         {product.tag && (
           <span className="product-tag">
             {product.tag}
           </span>
         )}
+
+        {/* WISHLIST BUTTON */}
 
         <button
           type="button"
@@ -44,7 +70,11 @@ function ProductCard({
             isWishlisted ? "active" : ""
           }`}
           onClick={() => toggleWishlist(product)}
-          aria-label="Toggle wishlist"
+          aria-label={
+            isWishlisted
+              ? "Remove from wishlist"
+              : "Add to wishlist"
+          }
         >
           <FiHeart
             fill={
@@ -53,15 +83,36 @@ function ProductCard({
           />
         </button>
 
+        {/* ADD TO BAG / ADDED TO CART */}
+
         <button
           type="button"
-          className="quick-add"
-          onClick={() => addToCart(product)}
+          className={`quick-add ${
+            isInCart ? "added-to-cart" : ""
+          }`}
+          onClick={handleAddToCart}
+          aria-label={
+            isInCart
+              ? "Already added to cart"
+              : "Add to bag"
+          }
         >
-          <FiShoppingBag />
-          ADD TO BAG
+          {isInCart ? (
+            <>
+              <FiCheck />
+              ADDED TO CART
+            </>
+          ) : (
+            <>
+              <FiShoppingBag />
+              ADD TO BAG
+            </>
+          )}
         </button>
+
       </div>
+
+      {/* PRODUCT INFORMATION */}
 
       <div className="product-info">
         <p>{product.category}</p>
